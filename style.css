@@ -1,0 +1,35 @@
+body {
+    background-color:black;
+    color:aliceblue;
+}
+.main {
+    position: absolute;
+    max-width: 600px;
+    transform: translate(-50%,0);
+    left: 50%;
+}
+.title {
+    font-family: monospace;
+}
+.j {
+    color:darkcyan
+}
+.s {
+    color:deepskyblue
+}
+.z {
+    color:royalblue
+}
+.both {
+    color:aqua
+}
+.vii {
+    color: hotpink;
+    font-family: monospace;
+    font-style: italic;
+}
+.poem {
+    color:indianred;
+    font-family: monospace;
+    font-style: italic;
+}

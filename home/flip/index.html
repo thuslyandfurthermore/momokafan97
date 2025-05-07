@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>flip</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <a href="/home" id="home" style="text-align: center"><h3>go back &lt;--~</h3></a>
+  <h1>flip</h1>
+	<div class="main"> 
+  	<canvas width="800" height="800" id="canvas">is this even displaying? why not?? do you, like, not have html5	</canvas>
+	</div>
+	
+	<br><br>
+	<div class="main">
+	<label for="sizeSelector">board size:</label>
+	<select name="size" id="sizeSelector">
+	  <option value="3">3 x 3</option>
+	  <option value="4" selected>4 x 4</option>
+	  <option value="5">5 x 5</option>
+	  <option value="6">6 x 6</option>
+	  <option value="7">7 x 7</option>
+	</select>
+	</div>
+	<br>
+	
+	<div class="main">
+	  <button id="newGame">new game!</button>
+	  <button id="solve">solve this board</button>
+	</div>
+	
+	<br><br>
+	<p>the following is copied from <a href="https://www.chiark.greenend.org.uk/~sgtatham/puzzles/doc/flip.html">simon tatham's manual from the original implementation</a>. ive struck out things that ya can't do in this version</p>
+<h1><a name="flip"></a>Chapter 14: <a name="i0"></a>Flip</h1>
+<p>
+You have a grid of squares, some light and some dark. Your aim is to light all the squares up at the same time. You can choose any square and flip its state from light to dark or dark to light, but when you do so, other squares around it change state as well.
+</p>
+<p>
+Each square contains a small diagram showing which other squares change when you flip it.
+</p>
+<h2><a name="flip-controls"></a>14.1 <a name="i1"></a>Flip controls</h2>
+<p>
+<strike>This game can be played with either the keyboard or the mouse.</strike>
+</p>
+<p>
+Left-click in a square to flip it and its associated squares, <strike>or use the cursor keys to choose a square and the space bar or Enter key to flip.</strike>
+</p>
+<p>
+If you use the &#8216;Solve&#8217; function on this game, it will mark some of the squares in red. If you click once in every square with a red mark, the game should be solved. (If you click in a square <em>without</em> a red mark, a red mark will appear in it to indicate that you will need to reverse that operation to reach the solution.)
+</p>
+<h3>changelog</h3>
+<p><i>hi its tala, update, the solve button now always shows the simplest solution! it took as much work to do that as to make the rest of the game lmao.</i></p>
+<p><i>update 2: im tryna redo the solver <strong>again</strong> with like, systems of linear equations but its hard so i added a fade to the squares. fun!</i></p>
+
+  <a href="/random/flip/index.js" id="home" style="text-align: center"><h3>the javascript source code</h3></a>
+  <br>
+  <a href="/random/flip/generateEquivalences.py" id="home" style="text-align: center"><h3>some precomputing source code for the solver written in python</h3></a>
+	<script defer src="index.js"></script>
+</body>
+</html>

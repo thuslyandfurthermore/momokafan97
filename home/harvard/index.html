@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css"/>
+  <script src='harvardsentences.json'></script>
+  <title>harvard sentences poetry</title>
+</head>
+<body>
+  <a href="/home" id="home">go back &lt;--~</a>
+  <h2>poetry w/ harvard sentences!</h2>
+  <div id='intro'>
+    <p>the harvard sentences were created by the harvard psycho-acoustic laboratory in the sixties. they wanted to quantify the degradation of audio thru radio &amp;c by having a standard,
+    well behaved set of sentences to quiz people on. they're still used to this day to test communications equipment. i discovered them by accidentally enabling an unlabeled engineering mode test on my phone at low volume and forgetting it was on all night
+  </p>
+    <p>the sentences are constructed from a set of so-called phonemically balanced words, and made up of one syllable words except for precisely one two syllable word per sentence</p>
+  </div>
+  <div id='app'>
+    <div id='app1'>
+      <ul id='list'>
+        <li id='current'>~~~~~</li>
+      </ul>
+    </div>
+    <div id='app2'>
+      <button onclick='roll()'>…</button>
+      <button onclick="add()">+</button>
+      <button onclick="clearer()">_</button>
+    </div>
+  </div>
+  
+  <div id='instructions'>
+    <p>press … to grab a new random harvard sentence</p>
+    <p>press + to add it to the end of the list &amp;</p>
+    <p>press _ to start over</p>
+    <p>(you can drag the sentences around to reorder them)</p>
+    <p>the,,, the drag and drop stuff was chatgpt im sry lmao</p>
+  </div>
+  <script defer src='script.js'></script>
+</body>
+</html>

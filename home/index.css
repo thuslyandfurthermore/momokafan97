@@ -1,0 +1,99 @@
+@font-face {
+    font-family: "rainyhearts";
+    src: url("/rainyhearts.ttf");
+}
+
+body {
+  font-family: "rainyhearts";
+  background-color: #c8c;
+  color: #c8c;
+  text-align: center;
+}
+
+#main a {
+  display: inline-block;
+  align-content: center;
+  align-self: center;
+  min-height: 4em;
+  width: 75%;
+  border-radius: 20px;
+  background-color: #fde;
+}
+
+h2 {
+  color: #f6a;
+}
+
+#container {
+  display: block;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  ms-transform: translate(-50%, -50%);
+  width: 90%;
+  height: 90%;
+  top: 50%;
+  left: 50%;
+  background-color: #fde;
+  overflow: auto;
+  max-width: 800px;
+  align-self: center;
+}
+
+#main {
+  padding: 1em;
+  width: 90%;
+}
+
+#foot {
+  display: flex;
+  position: absolute;
+  flex-direction: row;
+  overflow: auto;
+  height: 10%;
+  bottom: 0;
+  align-self: center;
+  width: 100%;
+}
+
+.button {
+  display: flex;
+  border: 2px solid #ecd;
+  background-color: #fde;
+  flex-direction: column;
+  flex-grow: 1;
+  border-radius: 20px;
+  margin: 0 0.5em 0.25em 0.5em;
+}
+
+.button p {
+  flex-grow: 1;
+  align-content: center;
+}
+
+.back {
+  background-color: #228;
+}
+
+a:link {color: #f4a}
+a:visited {color: #d28}
+a:hover {color: #f6c}
+a:active {color: #d00}
+
+strong { color: #000; }
+em { color: #bdf; }
+
+ul {
+  width: 100%;
+  align-content: center;
+  list-style-type: none;
+  list-style-position: inside;
+  padding: 0;
+}
+
+ul li{
+  padding: 0.5em;
+  margin: 0.5em;
+  flex-grow: 1;
+  background-color: #c8c;
+  border-radius: 30px;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width">
+    <script src="oklab.js"></script>
+    <title>hue game js</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <p class="home"><a href="/home">&lt;-~ go back</a></p>
+        <h3>hue</h3>
+        <canvas id="main" width="800px" height="800px">canvas not supported??</canvas>
+        <div class="controls">
+            <button id="newGame" onclick="NewGame()">new game</button>
+            <button id="shuffle" onclick="Shuffle()">shuffle</button>
+            <div class="separator">
+                <button id="sizeDown" onclick="SizeDown()">-</button>
+                <button id="sizeText">size: 5</button>
+                <button id="sizeUp" onclick="SizeUp()">+</button>
+            </div>
+            <button id="switchColorspace" onclick="SwitchColorspace()">oklab</button>
+            <button id="switchDifficulty" onclick="SwitchDifficulty()">easy</button>
+        </div>
+        <h4>a pure html canvas reimplementation of i love hue, a game about sorting colors.</h4>
+        <ul>
+            <li>before you shuffle you can pin squares in place so they won't be shuffled by clicking them</li>
+            <li>after you shuffle to start the game, left click to select a square or swap it with another square</li>
+            <li>when the puzzle is solved, all squares will pin themselves</li>
+        </ul>
+        <p class="credit"><a href="https://gist.github.com/earthbound19/e7fe15fdf8ca3ef814750a61bc75b5ce">javascript oklab conversion</a></p>
+    </div>
+    <script src="hue.js"></script>
+</body>
+</html>

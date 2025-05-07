@@ -1,0 +1,45 @@
+body {
+    background-color: black;
+    color: aliceblue;
+    text-align: center;
+    font-family: sans;
+    font-size: 12pt;
+}
+
+.container {
+    position: fixed;
+    overflow: auto;
+    width: 90%;
+    max-width: 800px;
+    height: 100%;
+    transform: translate(-50%, 0);
+    left: 50%;
+}
+
+.controls {
+    display:flex;
+    line-height: 2em;
+    justify-content: space-around;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    row-gap: 1em;
+    width:100%;
+}
+
+.separator {
+    display:flex;
+    height: 100%;
+
+}
+
+button {
+    height: 2.5em;
+    min-width: 2em;
+    font-size: 12pt;
+}
+
+canvas {
+    border: 1px solid aliceblue;
+    left: 2.5%;
+}
