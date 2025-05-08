@@ -9,7 +9,6 @@ const switchColorspace = document.getElementById('switchColorspace');
 const switchDifficulty = document.getElementById('switchDifficulty');
 
 
-
 class Cell {
     constructor(x,y) {
       this.x = x;
@@ -24,46 +23,6 @@ class Cell {
       this.defaultPinned = false;
     }
 };
-
-var xInterp = [];
-var yInterp = [];
-var scInterp = [];
-
-class Interpolation{
-    constructor(startValue, stopValue, length, ref){
-      this.startValue = startValue;
-      this.stopValue = stopValue;
-      this.length = length;
-      this.startTime = Date.now;
-      this.stopTime = Date.now + length;
-      this.ref = ref;
-    }
-    get(time){
-      let timeSinceStart = time - this.startTime;
-      let proportion = 1 - (Math.cos(3.142 * timeSinceStart / this.length) + 1) / 2;
-      
-      if (time > this.stopTime){
-        for (let i in xInterp){
-          if (xInterp[i] === this){
-            xInterp[i] = null;
-          }
-        }
-        for (let i in yInterp){
-          if (yInterp[i] === this){
-            yInterp[i] = null;
-          }
-        }
-        for (let i in scInterp){
-          if (scInterp[i] === this){
-            scInterp[i] = null;
-          }
-        }
-        return this.stopValue;
-      } else {
-        return this.startValue + ((this.stopValue - this.startValue) * proportion);
-      }
-    }
-  }
 
 var cells = [];
 var cW = canvas.width * 0.95;
@@ -88,6 +47,7 @@ var oklchA;
 var oklchB;
 var oklchC;
 var oklchD;
+
 
 //makes the canvas square and neat
 window.addEventListener('resize', resizeCanvas);
@@ -131,7 +91,7 @@ function NewGame() {
             var oklchLerpX1 = oklchLerp(oklchA, oklchB, x / (size-1));
             var oklchLerpX2 = oklchLerp(oklchC, oklchD, x / (size-1));
             newCell.oklch = oklchLerp(oklchLerpX1, oklchLerpX2, y / (size-1));
-
+            //console.log(`(${x},${y}): ${Math.floor(newCell.oklch.h)}`);
             //pin corners
             if ((x == 0 || x == size-1) && (y == 0 || y == size-1)) {
                 newCell.pinned = true;
@@ -290,25 +250,37 @@ function rgbDistance(A, B) {
 
 function rgbLerp(A, B, x) {
     var output = {r: undefined, g: undefined, b: undefined};
-    output.r = A.r * x + B.r * (1-x);
-    output.g = A.g * x + B.g * (1-x);
-    output.b = A.b * x + B.b * (1-x);
+    output.r = B.r * x + A.r * (1-x);
+    output.g = B.g * x + A.g * (1-x);
+    output.b = B.b * x + A.b * (1-x);
     return output;
 }
 
 function oklabLerp(A, B, x) {
     var output = {L: undefined, a: undefined, b: undefined};
-    output.L = A.L * x + B.L * (1-x);
-    output.a = A.a * x + B.a * (1-x);
-    output.b = A.b * x + B.b * (1-x);
+    output.L = B.L * x + A.L * (1-x);
+    output.a = B.a * x + A.a * (1-x);
+    output.b = B.b * x + A.b * (1-x);
     return output;
 }
 
 function oklchLerp(A, B, x) {
-    var output = {L: undefined, a: undefined, b: undefined};
-    output.L = A.L * x + B.L * (1-x);
-    output.c = A.c * x + B.c * (1-x);
-    output.h = A.h * x + B.h * (1-x);
+    var output = {L: undefined, c: undefined, h: undefined};
+    output.L = B.L * x + A.L * (1-x);
+    output.c = B.c * x + A.c * (1-x);
+
+    // *sigh*
+    var difference = Math.abs(B.h - A.h);
+    if (difference > 180) {
+        if (B.h > A.h) {
+            output.h = (B.h * x + (A.h + 360) * (1-x)) % 360;
+        } else {
+            output.h = ((B.h + 360) * x + A.h * (1-x)) % 360;
+        }
+    } else {
+        output.h = B.h * x + A.h * (1-x);
+    }
+    //console.log(output);
     return output;
 }
 
@@ -322,7 +294,7 @@ function okLabToOkLch(okLab) {
     // Calculate hue h
     let h = Math.atan2(b, a) * (180 / Math.PI);
 
-    // Ensure H is in the range [0, 360)
+    // Ensure h is in the range (0, 360)
     if (h < 0) {
         h += 360;  //tf is this
     }
