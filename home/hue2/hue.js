@@ -271,7 +271,7 @@ function oklchLerp(A, B, x) {
 
     // *sigh*
     var difference = Math.abs(B.h - A.h);
-    if (difference > 180) {
+    if (difference > 180) { //this makes it change direction unexpectedly sometimes
         if (B.h > A.h) {
             output.h = (B.h * x + (A.h + 360) * (1-x)) % 360;
         } else {
